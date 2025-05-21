@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="index.ico" type="image/x-icon">
+    <!-- Agregar FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantSense - Saber Más</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <a href="login.html" class="back-button">
+        <img src="regresar.png" alt="Regresar">
+    </a>
+    
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-seedling"></i> PlantSense</h1>
+            <p>Cuidado Inteligente para tu Huerto Vertical</p>
+        </header>
+        
+        <h2><i class="fas fa-info-circle"></i> Introducción</h2>
+        <p>PlantSense es un sistema basado en tecnología IoT diseñado para optimizar el mantenimiento de un huerto vertical en interiores. Su propósito es automatizar el monitoreo del riego y la calidad del agua para garantizar el crecimiento saludable de las plantas. Con este sistema, los usuarios pueden disfrutar de los beneficios de tener plantas en casa sin preocuparse por su cuidado diario.</p>
+        
+        <h2><i class="fas fa-cogs"></i> ¿Cómo Funciona?</h2>
+        <p>El sistema cuenta con sensores de humedad que detectan cuando el sustrato alcanza niveles críticos de humedad, activando automáticamente el riego por goteo y deteniéndolo al alcanzar niveles óptimos. Además, incorpora sensores de pH para analizar la calidad del agua y asegurar condiciones adecuadas para la absorción de nutrientes.</p>
+        
+        <div class="chart-container">
+            <canvas id="humedadChart"></canvas>
+        </div>
+        
+        <h2><i class="fas fa-leaf"></i> Beneficios</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-tint"></i>
+                <h3>Optimización del Agua</h3>
+                <p>Reducción del desperdicio y mejora de la eficiencia del riego, contribuyendo a la sostenibilidad.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-flask"></i>
+                <h3>Calidad Óptima</h3>
+                <p>Garantía de una calidad óptima del agua para la absorción de nutrientes por las plantas.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <h3>Fácil Mantenimiento</h3>
+                <p>Ideal para personas con poco tiempo o experiencia en jardinería.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-globe-americas"></i>
+                <h3>Sostenibilidad</h3>
+                <p>Promoción de prácticas sostenibles dentro del hogar, contribuyendo al cuidado del planeta.</p>
+            </div>
+        </div>
+        
+        <h2><i class="fas fa-lightbulb"></i> Justificación</h2>
+        <p>El acceso y uso eficiente del agua son fundamentales para la sostenibilidad ambiental. En muchos hogares, el riego ineficiente conlleva a un consumo excesivo de agua o al deterioro de las plantas. Con PlantSense, se busca automatizar y optimizar el consumo de recursos, permitiendo que cualquier persona pueda mantener un huerto en casa sin preocupaciones.</p>
+        
+        <h2><i class="fas fa-bullseye"></i> Objetivos</h2>
+        <p>El objetivo principal de PlantSense es desarrollar un sistema automatizado que garantice un equilibrio perfecto entre riego y calidad del agua. Además, busca:</p>
+        <ul>
+            <li>Automatizar el riego según los niveles de humedad óptimos (40%-80%).</li>
+            <li>Garantizar una calidad de agua óptima mediante el monitoreo del pH.</li>
+            <li>Reducir la necesidad de intervención manual en el mantenimiento del huerto.</li>
+        </ul>
+        
+        <div class="button-container">
+            <a href="#" class="button"><i class="fas fa-download"></i> Descargar Manual</a>
+            <a href="#" class="button"><i class="fas fa-user-plus"></i> Comenzar Ahora</a>
+        </div>
+        
+        <footer>
+            <p>© 2025 PlantSense - Todos los derechos reservados</p>
+        </footer>
+    </div>
+    
+    <script src="scripts1.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Huerto Vertical</title>
+    <!-- Ícono de la pestaña -->
+    <link rel="icon" href="index.ico" type="image/x-icon">
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Estilo para centrar el botón flotante */
+        .float-button {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        
+        /* Estilo para que las tarjetas sean clicables */
+        .card {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <span>PlantSense</span>
+            </div>
+            <nav>
+                <button onclick="window.location.href='sabermas.html';">
+                    <i class="fas fa-info-circle"></i> Información
+                </button>
+                <button onclick="window.location.href='sugerencias.html';">
+                    <i class="fas fa-lightbulb"></i> Sugerencias
+                </button>
+                <button onclick="window.location.href='contacto.html';">
+                    <i class="fas fa-envelope"></i> Contacto
+                </button>
+                <button class="danger" onclick="window.location.href='index.html';">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="dashboard">
+            <!-- Tarjeta de temperatura con histograma -->
+            <div class="card" onclick="window.location.href='historial.html?param=temperatura';">
+                <div class="card-header">
+                    <i class="fas fa-thermometer-half"></i>
+                    <h2>Temperatura del Aire</h2>
+                    <div id="temp-status" class="status-dot status-optimal"></div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="tempChart"></canvas>
+                </div>
+                <div class="last-updated">Última actualización: <span id="temp-updated">--</span></div>
+            </div>
+
+            <!-- Tarjeta de humedad del aire - Ahora con gráfica lineal -->
+            <div class="card" onclick="window.location.href='historial.html?param=humedad_aire';">
+                <div class="card-header">
+                    <i class="fas fa-tint"></i>
+                    <h2>Humedad del Aire</h2>
+                    <div id="humidity-status" class="status-dot status-optimal"></div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="humidityChart"></canvas>
+                </div>
+                <div class="last-updated">Última actualización: <span id="humidity-updated">--</span></div>
+            </div>
+
+            <!-- Tarjeta de humedad del suelo -->
+            <div class="card" onclick="window.location.href='humedad_suelo.html?param=humedad_suelo';">
+                <div class="card-header">
+                    <i class="fas fa-water"></i>
+                    <h2>Humedad del Suelo</h2>
+                    <div id="soil-status" class="status-dot status-optimal"></div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="soilChart"></canvas>
+                </div>
+                <div class="last-updated">Última actualización: <span id="soil-updated">--</span></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function actualizarDatos() {
+            fetch("guardar_datos.php")
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Para depuración en la consola del navegador
+                    cargarDatosDesdeBD(); // Llamar a la función que obtiene datos de la BD
+                })
+                .catch(error => console.error("Error al obtener datos:", error));
+        }
+        
+        // Llamar a la función cada 10 segundos
+        setInterval(actualizarDatos, 10000);
+        
+        function cargarDatosDesdeBD() {
+            fetch("obtener_datos.php")
+                .then(response => response.json())
+                .then(data => {
+                    if (data) {
+                        document.getElementById("temp-updated").textContent = data.temperatura + "°C";
+                        document.getElementById("humidity-updated").textContent = data.humedad_aire + "%";
+                        document.getElementById("soil-updated").textContent = data.humedad_suelo + "%";
+                    }
+                })
+                .catch(error => console.error("Error al obtener datos de la BD:", error));
+        }
+        </script>
+        
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 PlantSense - Monitor de Huerto Vertical. <a href="https://www.thingspeak.com" target="_blank">Powered by ThingSpeak</a></p>
+    </footer>
+    
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    
+</body>
+</html>

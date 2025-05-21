@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login PlantSense</title>
+    <link rel="icon" href="images.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles3.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-area">
+            <div class="plant-icon">🌱</div>
+            <h2>PlantSense</h2>
+        </div>
+        
+        <div id="notification" class="notification"></div>
+
+        <form id="loginForm" onsubmit="return validarLogin()">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="usuario" placeholder="Usuario" required autocomplete="username">
+            </div>
+            
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="contrasena" placeholder="Contraseña" required autocomplete="current-password">
+            </div>
+            
+            <button type="submit">
+                Iniciar Sesión
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <p>¿Olvidaste tu contraseña? <a href="#">Recuperar</a></p>
+        </div>
+    </div>
+
+    <script src="script4.js"></script>
+</body>
+</html>
